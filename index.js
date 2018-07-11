@@ -1,3 +1,4 @@
+"use strict";
 import { app } from './server/server';
 
 app.listen(8000, (err) => {
