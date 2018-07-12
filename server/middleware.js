@@ -1,3 +1,6 @@
+import bodyParser from 'body-parser';
+
 export const middleware = (app) => {
-    console.log('Middleware working on app');
+    app.use(bodyParser.json());
+    app.use(bodyParser.urlencoded({ extended: true }));
 }
