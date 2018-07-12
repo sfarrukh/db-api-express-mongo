@@ -6,7 +6,7 @@ const inventorySchema = new Schema({
     brand: String,
     description: String,
     avgStar: Number,
-    inStock: Number
+    inStock: Boolean
 });
 
 const model = mongoose.model('inventory', inventorySchema);
