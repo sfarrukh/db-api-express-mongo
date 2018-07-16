@@ -1,6 +1,6 @@
 import express from 'express';
-import { middleware } from './middleware';
-import { router } from './api-routes';
+import { middleware } from './middleware/middleware';
+import { router } from './api/routes';
 import mongoose from 'mongoose';
 const url = 'mongodb://localhost:27017/enterprise';
 
@@ -8,6 +8,8 @@ const app = express();
 
 // middleware
 middleware(app);
+app.use(express.json());
+app.use(express.urlencoded({"extended":true}));
 
 // connect to MongoDB with 'mongoose' driver
 mongoose.connect(url, {useNewUrlParser:true})

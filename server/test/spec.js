@@ -1,4 +1,4 @@
-import { app } from './server'
+import { app } from '../server'
 import chai from 'chai';
 import request from 'supertest';
 const expect = chai.expect;
