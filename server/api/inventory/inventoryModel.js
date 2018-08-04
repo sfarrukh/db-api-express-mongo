@@ -9,6 +9,6 @@ const inventorySchema = new Schema({
     inStock: Boolean
 });
 
-const model = mongoose.model('inventory', inventorySchema);
+const inventoryModel = mongoose.model('inventory', inventorySchema);
 
-export { model };
+export { inventoryModel };

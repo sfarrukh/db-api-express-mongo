@@ -1,14 +1,14 @@
-import { model } from './model';
+import { memberModel } from './memberModel';
 
-export const controller = {
+export const memberController = {
     get: (req, res) => {
-        model.find()
+        memberModel.find()
             .then((returnedData) => { res.send(returnedData); })
             .catch((err) => { console.log(err.message ); })
     },
     post: (req, res) => {
         let newItem = req.body;
-        model.create(newItem)
+        memberModel.create(newItem)
             .then((created) => { res.json(created); })
             .catch((err) => { console.log(err.message); })
     }

@@ -1,9 +1,9 @@
 import express from 'express';
 const router = express.Router();
-import { controller } from './controller';
+import { inventoryRoutes } from './inventory/inventoryRoutes';
+import { memberRoutes } from './member/memberRoutes';
 
-router.route('/inventory')
-    .get(controller.get)
-    .post(controller.post)
+router.use('/inventory', inventoryRoutes);
+router.use('/member', memberRoutes);
 
 export { router };
