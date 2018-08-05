@@ -1,4 +1,4 @@
 
 export const middleware = (app) => {
-    console.log('Middleware running')
+    // console.log('Middleware running')
 }

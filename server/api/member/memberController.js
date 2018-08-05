@@ -7,10 +7,13 @@ export const memberController = {
             .catch((err) => { console.log(err.message ); })
     },
     post: (req, res) => {
-        let newItem = req.body;
-        memberModel.create(newItem)
-            .then((created) => { res.json(created); })
-            .catch((err) => { console.log(err.message); })
+        let newItem = new memberModel(req.body);
+        newItem.save()
+            .then((created) => { 
+                res.json(created); 
+                console.log('New member created')})
+            .catch((err) => {
+                console.log(err.message); })
     }
 }
 
