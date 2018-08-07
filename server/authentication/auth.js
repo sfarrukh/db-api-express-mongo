@@ -9,7 +9,7 @@ export const auth = {
 
         if (!username || !password){
             return res.status(400).end('Please provide username & password');
-        }
+        };
         
         memberModel.findOne({username: username})
             .then((member) => {
@@ -30,8 +30,22 @@ export const auth = {
             .catch((err) => { next(err); })
     },
 
-    signToken: (req, res, next) => {
-        let signToken = jwt.sign({foo: 'bar'}, 'shhh')
-        res.json(signToken);
+    signToken: (req, res) => {
+        let signedToken = jwt.sign({key: 'value'}, 'secret', { expiresIn: '1h' })
+        res.json(signedToken);
+    },
+
+    decodeToken: (req, res, next) => {
+        let token = req.headers.authorization
+        jwt.verify(token, 'secret', (err, decoded) => {
+            if (err) err.message;
+            if (!decoded){
+                res.status(401).send('Unauthorized')
+            }else if(decoded.key === 'value'){
+                return next();
+            }else{
+                res.status(401).send('Something went wrong');
+            }
+        })
     }
 }
